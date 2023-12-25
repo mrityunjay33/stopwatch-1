@@ -5,19 +5,19 @@ function App() {
   const [time, setTime] = useState(0);
   const [isStart, setIsStart] = useState(false);
 
-  useEffect(() =>{
-    let interval;
-    if(isStart)
-    interval = setInterval(() =>{
-      setTime((prevTime)=> prevTime + 1);
-    }, 1000);
+    useEffect(() =>{
+      let interval;
+      if(isStart)
+      interval = setInterval(() =>{
+        setTime((prevTime)=> prevTime + 1);
+      }, 1000);
 
-    else clearInterval(interval);
+      else clearInterval(interval);
 
-    return () => {
+      return () => {
       clearInterval(interval);
     }
-  }, [isStart]);
+    }, [isStart]);
 
   const handleStartStop = () =>{
     setIsStart(!isStart);
@@ -30,7 +30,7 @@ function App() {
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = timeInSeconds % 60;
-    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    return `${minutes.toString().padStart(1, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
 
 
